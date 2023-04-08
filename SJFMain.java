@@ -21,15 +21,14 @@ public class SJFMain {
         }
 
         PriorityQueue<int []> pq = new PriorityQueue<>((int[] i1 , int[] i2) -> Integer.compare(i1[2] , i2[2]));
-        int currentClockTime = 0;
-
-        pq.add(fileList.get(0));
         StringBuilder ganttChart = new StringBuilder();
-
 //        for waiting time
         HashMap<String, Integer> waitingTime = new HashMap<>();
         HashMap<String , Integer> lastTime = new HashMap<>();
         int prev = -1;
+        int currentClockTime = 0;
+
+        pq.add(fileList.get(0));
 
         while (!pq.isEmpty()){
             int[] arr = pq.poll();
@@ -40,26 +39,24 @@ public class SJFMain {
             }
 
 //            waiting time calculation
-            if(prev != arr[0]){
+            if(prev != arr[0] && prev!= 1){
                 lastTime.put("p"+prev , currentClockTime);
             }
-            prev = arr[0];
             if(!waitingTime.containsKey("p"+arr[0])){
                 waitingTime.put("p"+arr[0] , (currentClockTime - arr[1]));
-            }
-            if(lastTime.containsKey("p"+arr[0])){
+            }else if(lastTime.containsKey("p"+arr[0])){
                 waitingTime.put("p"+arr[0] , waitingTime.get("p"+arr[0]) + (currentClockTime - lastTime.get("p"+arr[0])));
                 lastTime.remove("p"+arr[0]);
             }
 
+            prev = arr[0];
             ganttChart.append(",p").append(arr[0]).append(",");
-            arr[2] = arr[2] - 1;
+            arr[2]--;
             currentClockTime++;
-            if(arr[2] > 0){
+
+            if(arr[2] > 0)
                 pq.add(arr);
-            }
-            ArrayList<int[]> byArrivalTime = findByArrivalTime(currentClockTime, fileList);
-            pq.addAll(byArrivalTime);
+            pq.addAll( findByArrivalTime(currentClockTime, fileList));
         }
 
         ganttChart.append(currentClockTime);

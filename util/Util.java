@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Util {
-    public ArrayList<int[]> sortByArrivalTime(ArrayList<int[]> fileList) {
+    public void sortByArrivalTime(ArrayList<int[]> fileList) {
         for (int i = 0; i < fileList.size() - 1; i++) {
             for (int j = 0; j < fileList.size() - i - 1; j++) {
                 int[] arr1 = fileList.get(j);
@@ -17,7 +17,6 @@ public class Util {
                 }
             }
         }
-        return fileList;
     }
     public void displayFileList(ArrayList<int[]> fileList) {
         System.out.println("printing all file content ... ");
