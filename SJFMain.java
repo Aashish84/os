@@ -39,7 +39,7 @@ public class SJFMain {
             }
 
 //            waiting time calculation
-            if(prev != arr[0] && prev!= 1){
+            if(prev != arr[0] && prev!= -1){
                 lastTime.put("p"+prev , currentClockTime);
             }
             if(!waitingTime.containsKey("p"+arr[0])){
