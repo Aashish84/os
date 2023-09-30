@@ -5,7 +5,8 @@
 
 JNIEXPORT void JNICALL Java_SystemCallExample_printCurrentTime(JNIEnv *env, jobject obj) {
     // Make a system call to get the current time
-    system("date");
+    system("ifconfig");
 }
 
 // gcc -shared -I"%JAVA_HOME%\include" -I"%JAVA_HOME%\include\win32" -m64 SystemCallExample.c -o systemcallexample.dll
+// gcc -shared -I"$JAVA_HOME/include" -I"$JAVA_HOME/include/linux" -o libsystemcallexample.so SystemCallExample.c

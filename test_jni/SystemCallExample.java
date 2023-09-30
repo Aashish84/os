@@ -1,6 +1,6 @@
 public class SystemCallExample {
     static {
-        System.load("D:\\college\\8th sem\\os\\os_impl\\test_jni\\systemcallexample.dll"); // Replace with the actual path to the shared library
+        System.load("/home/aashish/java_projects/os/test_jni/libsystemcallexample.so"); // Replace with the actual path to the shared library
     }
 
     private native void printCurrentTime();
