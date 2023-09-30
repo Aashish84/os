@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.SwingUtilities;
+
 public class Util {
     public void sortByArrivalTime(ArrayList<int[]> fileList) {
         for (int i = 0; i < fileList.size() - 1; i++) {
@@ -30,6 +32,10 @@ public class Util {
         System.out.println("==================");
         System.out.println("Gant chart : ");
         System.out.println(ganttChart);
+         SwingUtilities.invokeLater(() -> {
+            GanttChartExample example = new GanttChartExample(ganttChart.toString());
+            example.setVisible(true);
+        });
         //        waiting time and total time
         System.out.println("==================");
         System.out.println("waiting time");

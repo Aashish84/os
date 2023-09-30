@@ -1,0 +1,7 @@
+id,arrivalTime,CPU Brust time
+0,0,7
+1,5,3
+2,0,2
+3,7,10
+4,1,5
+5,3,6

@@ -21,6 +21,7 @@ public class ReadFile {
                 String []split = data.split(",");
                 fileList.add(new int[] {stringToInt(split[0]) ,stringToInt(split[1]) , stringToInt(split[2])});
             }
+            myReader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
